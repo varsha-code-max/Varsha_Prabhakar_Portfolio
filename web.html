@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Learn Web Development</title>
+    <style>
+        /* DAY 2: CSS BASICS */
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #891ff2 100%);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #b7ec56;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #6b3d9a;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Headings */
+        h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #667eea;
+            margin-top: 1rem;
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #667eea;
+            margin: 1rem auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Skills Section with Flexbox */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-card {
+            flex: 1 1 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Projects Section */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .project-item:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Training Institute Promotion */
+        .promo-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .promo-banner h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background: white;
+            color: #f5576c;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #f5576c;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Counter Display */
+        .counter-display {
+            text-align: center;
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DAY 1: HTML STRUCTURE -->
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="profile">
+            <h1>Welcome to My Portfolio! 👋</h1>
+            <img src="C:\Users\Sri Varsha\Downloads\WhatsApp Image 2025-12-16 at 10.51.59 AM.jpeg" alt="Profile Picture" class="profile-img" id="profileImg">
+            <h2>SRI VARSHA PRABHAKAR</h2>
+            <p>Electronics and Communication Engineer | Emerging Web Developer | Future Chip Designer|Business Development executive @ Pruvity HR solution </p>
+            <p><strong>Batch:</strong>2022-2026</p>
+        </section>
+
+        <div class="promo-banner">
+            <h2>🎓EDUCATION INFO</h2>
+            <p>SSLC - Capron Hall Hr. Sec. School - 86%</p>
+            <br>
+            <p>HSLC - Capron Hall Hr. Sec. School - 89%</p>
+            <br>
+            <p>B.E ECE - Anna University Regional Campus Madurai - 84%</p>
+        </div>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Engineering Graduate with knowledge of programming languages including C,Python and Verilog HDL. Strong problem-solving, analytical and leadership skills with that the ability to work effectively in team-based and independent settings.</p>
+            
+            <h3>My Achievements:</h3>
+            <br>
+            <ul>
+                <li>Secured First Position in National Level Technical Symposium at GCET - EXCENTRA'24</li><br>
+                <li>Third Level Position in National Level Technical Symposium at Dhanalakshmi Instituions - AI'STHETICA 2K25</li>
+                <br>
+                <li>SMART SCRIBE - Presented a Assitive Writing PAd Technology for the Dysgraphia People at AI'STHETICA 2K25</li>
+                <br>
+                <li>Build My own Portfoilo using HTML, CSS & JavaScript
+            </ul>
+
+            <h3>Certified Courses:</h3>
+            <br>
+            <ul>
+                <li>Completed the Low voltage CMOS Circuit NPTEL Course</li>
+                <br>
+                <li>Undergone B.A Hindi till Rashtrabhasaha</li>
+                <br>
+                <li>Completed Cisco Network Essentials Course</li>
+                <br>
+                <li>Completed Internship in TANTRANSCO at SCADA Communication domain</li>
+                <br>
+                <li>Completed Verilog HDL- Hands On Course in Mavelin Silicon</li>
+            </ul>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <p>Here are the stuffs I'm Well-chersihed:</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming</h3>
+                    <p>C, Python, VHDL, HTML, CSS</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Designing Software</h3>
+                    <p>Advanced Design Suite, NI Multisim</p>
+                </div>
+                <div class="skill-card">
+                    <h3>VLSI Software</h3>
+                    <p>Xilinx Design Suite, DSCH3</p>
+                </div>
+                <div class="skill-card">
+                    <h3>simulation Software</h3>
+                    <p>Proteus, ADAS Canoe, MATLAB</p>
+                </div>
+            </div>
+             <div style="margin-top: 2rem; text-align: center;">
+                <h3>Interactive Counter (JavaScript Demo)</h3>
+                <div class="counter-display" id="counter">0</div>
+                <button onclick="incrementCounter()">Click Me! +1</button>
+                <button onclick="resetCounter()">Reset</button>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <p>Projects I've built during My Academic :</p>
+            
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>Line Alert-Power outage reporting and Lineman notification system</h3>
+                    <p>A web interface used for the people to raise the complaint about 
+                    power cut,voltage fluctation to electricity board and admin had assigned the Line man for the Service</p>
+                </div>
+                <div class="project-item">
+                    <h3>Line Follower Bot </h3>
+                    <p>Built an autonomous robot using IR sensors to follow a fixed path</p>
+                </div>
+                <div class="project-item">
+                    <h3>GPS-Based Location Finder</h3>
+                    <p>Designed a system to fetch and display real time location using GPS</p>
+                </div>
+                <div class="project-item">
+                    <h3>Pulse Amplitude Modulation</h3>
+                    <p>Implemented a PAM circuit for analog signal transmission and analysis</p>
+                </div>
+                <div class="project-item">
+                    <h3>HYDRO AI</h3>
+                    <p>AI model predicting groundwater availability percentage using soil pH and moisture data<p>
+                </div>
+                <div class="project-item">
+                    <h3>ReGenSense AI</h3>
+                    <p>Developed a machine learning based system to predict regenerative braking energy recovery and extended driving range in electric vehicles<p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="number">Phone:</label>
+                    <input type="number" id="course" name="course" placeholder="+91:" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me for the Purpose of Contact..." required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+        <script>
+            var count=0;
+            function incrementCounter(){
+                div= document.getElementById("counter")
+                count++
+                div.textContent=count
+            }
+            function resetCounter(){
+                count =0
+                document.getElementById("counter").textContent=count
+            }
+        </script>
+
+        <!-- Footer -->
+        <footer>
+            <p>Will be Reaching out You as Soon as Possible</p>
+            <p>📧 Email: varshasri2105@gmail.com </p>
+            <p><strong>Thanks For Visiting My Profile!!!</strong></p>
+        </footer>
+    </div>
+
+   
+</body>
+</html>
